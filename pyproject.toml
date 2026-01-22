@@ -1,41 +1,40 @@
-[tool.poetry]
+[project]
 name = "python-cdp-client"
 version = "1.4.0"
 description = "Python type wrappers for Chrome DevTools Protocol (CDP)"
-packages = [
-    {include = "pycdp"}
-]
-license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/HMaker/python-cdp"
+license = {text = "MIT"}
+authors = [
+    {name = "Mark E. Haase", email = "mehaase@gmail.com"},
+    {name = "Brian Mackintosh", email = "bcmackintosh@gmail.com"},
+    {name = "Heraldo Lucena", email = "heraldo.dev@gmail.com"}
+]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Topic :: Internet"
 ]
-authors = [
-    "Mark E. Haase <mehaase@gmail.com>",
-    "Brian Mackintosh <bcmackintosh@gmail.com>",
-    "Heraldo Lucena <heraldo.dev@gmail.com>"
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "deprecated>=1.2.9",
+    "inflection>=0.4.0",
+    "aiohttp>=3.8.3"
 ]
 
-[tool.poetry.dependencies]
-python = "^3.8, <3.12"
-deprecated = "^1.2.9"
-inflection = "^0.4.0"
-aiohttp = "^3.8.3"
+[project.urls]
+Homepage = "https://github.com/HMaker/python-cdp"
 
-[tool.poetry.dev-dependencies]
-mypy = "^0.770"
-pytest = "^5.4.1"
-sphinx = "^3.0.1"
-sphinx-autodoc-typehints = "^1.10.3"
-sphinx-rtd-theme = "^0.4.3"
-
-[tool.poetry.scripts]
+[project.scripts]
 cdpgen = "pycdp.gen.generate:cdpgen"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pycdp*"]
+
+[tool.setuptools.package-data]
+"pycdp.cdp" = ["py.typed", "README.md"]
+"pycdp.gen" = ["*.json", "README.md"]
