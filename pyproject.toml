@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-cdp"
+name = "python-cdp-client"
 version = "1.4.0"
 description = "Python type wrappers for Chrome DevTools Protocol (CDP)"
 packages = [
